@@ -1,3 +1,9 @@
+@media screen {
+    .container {
+        width: 80%
+    }
+}
+
 @media all {
     .page-break {
         display: none;
