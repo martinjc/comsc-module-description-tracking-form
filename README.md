@@ -5,11 +5,5 @@ Creating pre-populated tracking forms for the module review in academic year 201
 
 ## Requirements
 
-* jinja2  
-    for HTML templating
-* weasyprint
-    for HTML -> PDF conversion
-
-## Libs
-
-Uses [skeleton.css](getskeleton.com), slightly modified to remove media queries (since weasyprint doesn't like them).
+* fdfgen - for creating data format files to inject into the form
+* pdftk - for injecting data into the pdf files
