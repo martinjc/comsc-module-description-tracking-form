@@ -1,15 +1,7 @@
-# module-description-tracking-form
+# comsc-module-review
 
-Creating pre-populated tracking forms for the module review in academic year 2016/17 in the School of Computer Science & Informatics, Cardiff University
-
+Scripts and tools for automating as much of the module review as possible
 
 ## Requirements
 
-* jinja2  
-    for HTML templating
-* weasyprint
-    for HTML -> PDF conversion
-
 ## Libs
-
-Uses [skeleton.css](getskeleton.com), slightly modified to remove media queries (since weasyprint doesn't like them).
