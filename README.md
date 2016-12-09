@@ -1,9 +1,11 @@
-# module-description-tracking-form
+# comsc-module-review
 
-Creating pre-populated tracking forms for the module review in academic year 2016/17 in the School of Computer Science & Informatics, Cardiff University
-
+Scripts and tools for automating as much of the module review as possible
 
 ## Requirements
 
 * fdfgen - for creating data format files to inject into the form
 * pdftk - for injecting data into the pdf files
+
+
+## Libs
