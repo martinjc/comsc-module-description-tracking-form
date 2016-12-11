@@ -1,3 +1,5 @@
+import os
+import json
 import requests
 
 from datetime import datetime
@@ -49,5 +51,11 @@ def get_module_handbook(module_code, occurence = ''):
 
 
 if __name__ == '__main__':
-    print(get_module_list('COMSC'))
-    print(get_module_handbook('CMT112'))
+    with open(os.path.join(os.getcwd(), 'src_data', 'COMSC_modules.json'), 'w') as output_file:
+        module_list = get_module_list('COMSC')
+        print(module_list)
+        json.dump(module_list, output_file)
+    with open(os.path.join(os.getcwd(), 'src_data', 'sample_module_description.json'), 'w') as output_file:
+        module_details = get_module_handbook('CMT112')
+        print(module_details)
+        json.dump(module_details, output_file)
