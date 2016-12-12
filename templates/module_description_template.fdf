@@ -1,11 +1,27 @@
 ---
 FieldType: Text
-FieldName: module_title
-FieldFlags: 4096
+FieldName: module_name
+FieldFlags: 33558528
 FieldJustification: Left
+FieldStyleDefault: font: Helvetica,sans-serif 18.0pt; text-align:left; color:#000000 
 ---
 FieldType: Text
 FieldName: module_code
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: level
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: delivery_language
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: module_leader
 FieldFlags: 0
 FieldJustification: Left
 ---
@@ -25,69 +41,52 @@ FieldFlags: 0
 FieldJustification: Left
 ---
 FieldType: Text
-FieldName: level
-FieldFlags: 0
-FieldJustification: Left
----
-FieldType: Text
-FieldName: module_leader
-FieldFlags: 0
-FieldJustification: Left
----
-FieldType: Text
-FieldName: freestanding
-FieldFlags: 0
-FieldJustification: Left
----
-FieldType: Text
-FieldName: maximum_on_module
-FieldFlags: 0
-FieldJustification: Left
----
-FieldType: Text
-FieldName: delivery_language
-FieldFlags: 0
-FieldJustification: Left
----
-FieldType: Text
 FieldName: module_description
+FieldFlags: 33558528
+FieldJustification: Left
+FieldStyleDefault: font: Helvetica,sans-serif 18.0pt; text-align:left; color:#000000 
+---
+FieldType: Text
+FieldName: semester
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: learning_outcomes
+FieldFlags: 33558528
+FieldJustification: Left
+FieldStyleDefault: font: Helvetica,sans-serif 18.0pt; text-align:left; color:#000000 
+---
+FieldType: Text
+FieldName: delivery
 FieldFlags: 33558528
 FieldJustification: Left
 FieldStyleDefault: font: Helvetica,sans-serif 12.0pt; text-align:left; color:#000000 
 ---
 FieldType: Text
-FieldName: learning_outcomes
-FieldFlags: 4096
-FieldJustification: Left
----
-FieldType: Text
-FieldName: delivery
-FieldFlags: 4096
-FieldJustification: Left
----
-FieldType: Text
 FieldName: skills
-FieldFlags: 4096
+FieldFlags: 33558528
+FieldJustification: Left
+FieldStyleDefault: font: Helvetica,sans-serif 12.0pt; text-align:left; color:#000000 
+---
+FieldType: Text
+FieldName: 1_assessment_date
+FieldFlags: 0
 FieldJustification: Left
 ---
 FieldType: Text
-FieldName: reassessment
-FieldFlags: 4096
+FieldName: 1_assessment_title
+FieldFlags: 0
 FieldJustification: Left
 ---
 FieldType: Text
-FieldName: syllabus_content
-FieldFlags: 4096
+FieldName: 1_assessment_contribution
+FieldFlags: 0
 FieldJustification: Left
 ---
 FieldType: Text
-FieldName: indicative_reading_list
-FieldFlags: 4096
-FieldJustification: Left
----
-FieldType: Text
-FieldName: indicative_software_requirements
-FieldFlags: 4096
+FieldName: 1_assessment_type
+FieldFlags: 0
 FieldJustification: Left
 ---
 FieldType: Text
@@ -106,7 +105,12 @@ FieldFlags: 0
 FieldJustification: Left
 ---
 FieldType: Text
-FieldName: 1_assessment_type
+FieldName: 5_assessment_type
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: 6_assessment_type
 FieldFlags: 0
 FieldJustification: Left
 ---
@@ -126,7 +130,12 @@ FieldFlags: 0
 FieldJustification: Left
 ---
 FieldType: Text
-FieldName: 1_assessment_contribution
+FieldName: 5_assessment_contribution
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: 6_assessment_contribution
 FieldFlags: 0
 FieldJustification: Left
 ---
@@ -146,12 +155,12 @@ FieldFlags: 0
 FieldJustification: Left
 ---
 FieldType: Text
-FieldName: 1_assessment_title
+FieldName: 5_assessment_title
 FieldFlags: 0
 FieldJustification: Left
 ---
 FieldType: Text
-FieldName: 1_assessment_date
+FieldName: 6_assessment_title
 FieldFlags: 0
 FieldJustification: Left
 ---
@@ -169,3 +178,36 @@ FieldType: Text
 FieldName: 4_assessment_date
 FieldFlags: 0
 FieldJustification: Left
+---
+FieldType: Text
+FieldName: 5_assessment_date
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: 6_assessment_date
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: assessment
+FieldFlags: 33558528
+FieldJustification: Left
+FieldStyleDefault: font: Helvetica,sans-serif 12.0pt; text-align:left; color:#000000 
+---
+FieldType: Text
+FieldName: syllabus_content
+FieldFlags: 0
+FieldJustification: Left
+---
+FieldType: Text
+FieldName: essential_reading
+FieldFlags: 33558528
+FieldJustification: Left
+FieldStyleDefault: font: Helvetica,sans-serif 12.0pt; text-align:left; color:#000000 
+---
+FieldType: Text
+FieldName: background_reading
+FieldFlags: 33558528
+FieldJustification: Left
+FieldStyleDefault: font: Helvetica,sans-serif 12.0pt; text-align:left; color:#000000 
