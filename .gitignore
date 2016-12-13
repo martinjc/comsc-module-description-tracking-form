@@ -1,2 +1,3 @@
 src_data/*
 dist/*
+__pycache__/*
