@@ -8,7 +8,10 @@ from fdfgen import forge_fdf
 from lib.handbookdata import *
 from lib.pdfdata import *
 
-
+#
+# Some simple code for parsing HTML I stole from
+# http://stackoverflow.com/questions/11061058/using-htmlparser-in-python-3-2
+#
 class MLStripper(HTMLParser):
     def __init__(self):
         super().__init__()
@@ -19,35 +22,51 @@ class MLStripper(HTMLParser):
     def get_data(self):
         return ''.join(self.fed)
 
-SRC_DATA_DIR = os.path.join(os.getcwd(), 'src_data')
-OUTPUT_DIR = os.path.join(os.getcwd(), 'dist')
-SCRATCH_DIR = os.path.join(os.getcwd(), 'scratch')
-
-filled_fields = []
-
 def strip_tags(html):
+    """
+    Remove all tags from HTML and return the
+    text contents
+    """
     s = MLStripper()
     s.feed(html)
     data = s.get_data()
     lines = data.split('\n')
     data = ''
+    # don't include any empty lines
     for line in lines:
         if line.strip():
             data += '%s\n' % line
     return data
 
+
 def add_existing_data(key, value):
     filled_fields.append((key, value))
 
 def get_description(descriptions, name):
+    """
+    Extract a named description from the list of descriptions in
+    the module handbook data, and return it as text
+    """
     for description in descriptions:
         if description['descriptionName']['descriptionCode'] == name:
             return strip_tags(description['descriptionDetail'])
     return None
 
+# where to put all the module descriptions
+OUTPUT_DIR = os.path.join(os.getcwd(), 'dist')
+
+filled_fields = []
+
 if __name__ == "__main__":
 
-    for mcode in ['CM1101', 'CM1102', 'CM1103', 'CM1202', 'CM1209', 'CM6112']:
+    # get the list of modules for the school
+    modules = get_module_list('COMSC')
+
+    # get the handbook data and create a fillable pdf
+    # for each module
+    for module in modules:
+        mcode = module['moduleCode']
+
         filled_fields = []
         module_data = get_module_handbook(mcode)
         descriptions = module_data['descriptions']
