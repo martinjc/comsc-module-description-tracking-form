@@ -53,7 +53,7 @@ def get_description(descriptions, name):
     return None
 
 # where to put all the module descriptions
-OUTPUT_DIR = os.path.join(os.getcwd(), 'dist')
+OUTPUT_DIR = os.path.join(os.getcwd(), 'dist', 'descriptions')
 
 filled_fields = []
 
