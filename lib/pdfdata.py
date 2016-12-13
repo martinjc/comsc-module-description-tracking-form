@@ -18,11 +18,3 @@ def get_fields_as_dict_from_pdf_datafile(fdf_data_file):
                 fields[value] = None
 
     return fields
-
-
-if __name__ == "__main__":
-
-    with open(os.path.join(os.getcwd(), 'lib', 'field_2_sims_mapping.json'), 'w') as output_mapping:
-        input_file = os.path.join(os.getcwd(), 'templates', 'module_description_template.fdf')
-        blank_mapping = get_fields_as_dict_from_pdf_datafile(input_file)
-        json.dump(blank_mapping, output_mapping)
