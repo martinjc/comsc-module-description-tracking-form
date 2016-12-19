@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ module.title }}</title>
+    <style>
+        html, body, * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            line-height: 1.4em;
+            padding-left: 2px;
+        }
+
+        img {
+            display: block;
+            max-width: 80%;
+            margin: auto;
+        }
+
+
+        h1, h2, h3 {
+            margin-bottom: 10px;
+        }
+
+        h1, h2 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        div.container {
+            width: 90%;
+            margin: auto;
+        }
+
+        @media all {
+        	.page-break	{ display: none; }
+        }
+
+        @media print {
+        	.page-break	{
+                display: block;
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{ module.title }} Feedback Report</h1>
+        </header>
+    </div>
+    <div class="container">
+    {% for chart in charts -%}
+        <header>
+            <h2>{{ chart.title }}</h2>
+        </header>
+        <img src="{{ chart.image }}" alt="chart.title">
+    {% endfor %}
+    </div>
+    <div class="container">
+        <header>
+            <h2>What did you particularly value about the module?</h2>
+        </header>
+        <ul>
+        {% for comment in value -%}
+            <li>{{ comment }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="container">
+        <header>
+            <h2>How do you think the module could be improved?</h2>
+        </header>
+        <ul>
+        {% for comment in improve -%}
+            <li>{{ comment }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
