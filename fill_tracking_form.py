@@ -102,4 +102,4 @@ if __name__ == "__main__":
         fdf_file.write(fdf)
         fdf_file.close()
 
-        subprocess.run(["pdftk", "templates/tracking_form_template.pdf",  "fill_form",  "dist/tracking_forms/data.fdf", "output", "dist/tracking_forms/%s.pdf" % mcode])
+        subprocess.run(["pdftk", "templates/tracking_form_template.pdf",  "fill_form",  "dist/tracking_forms/data.fdf", "output", "dist/%s/tracking_form.pdf" % mcode])
