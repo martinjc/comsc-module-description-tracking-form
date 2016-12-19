@@ -2,41 +2,11 @@ import os
 import requests
 import subprocess
 
-from html.parser import HTMLParser
 from fdfgen import forge_fdf
 
 from lib.handbookdata import *
 from lib.pdfdata import *
-
-#
-# Some simple code for parsing HTML I stole from
-# http://stackoverflow.com/questions/11061058/using-htmlparser-in-python-3-2
-#
-class MLStripper(HTMLParser):
-    def __init__(self):
-        super().__init__()
-        self.reset()
-        self.fed = []
-    def handle_data(self, d):
-        self.fed.append(d)
-    def get_data(self):
-        return ''.join(self.fed)
-
-def strip_tags(html):
-    """
-    Remove all tags from HTML and return the
-    text contents
-    """
-    s = MLStripper()
-    s.feed(html)
-    data = s.get_data()
-    lines = data.split('\n')
-    data = ''
-    # don't include any empty lines
-    for line in lines:
-        if line.strip():
-            data += '%s\n' % line
-    return data
+from lib.html import *
 
 
 def add_existing_data(key, value):
@@ -66,6 +36,7 @@ if __name__ == "__main__":
     # for each module
     for module in modules:
         mcode = module['moduleCode']
+        print(mcode)
 
         filled_fields = []
         module_data = get_module_handbook(mcode)
@@ -104,4 +75,4 @@ if __name__ == "__main__":
         fdf_file.write(fdf)
         fdf_file.close()
 
-        subprocess.run(["pdftk", "templates/module_description_template.pdf",  "fill_form",  "dist/data.fdf", "output", "dist/%s.pdf" % mcode])
+        subprocess.run(["pdftk", "templates/module_description_template.pdf",  "fill_form",  "dist/descriptions/data.fdf", "output", "dist/descriptions/%s.pdf" % mcode])
