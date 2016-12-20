@@ -27,5 +27,5 @@ def strip_tags(html):
     # don't include any empty lines
     for line in lines:
         if line.strip():
-            data += '%s\n' % line
+            data += '%s\n' % line.strip('\t ')
     return data
