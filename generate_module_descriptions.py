@@ -48,7 +48,16 @@ if __name__ == "__main__":
         add_existing_data("external_subject_code", module_data['module']['extSubCode'])
         add_existing_data("background_reading", get_description(descriptions, 'MAV_READ2'))
         add_existing_data("essential_reading", get_description(descriptions, 'MAV_READ'))
-        add_existing_data("learning_outcomes", get_description(descriptions, 'MAV_LOUT'))
+        learning_outcomes = get_description(descriptions, 'MAV_LOUT')
+        learning_outcomes = learning_outcomes.split('\n')
+        new_outcomes = []
+        for i, lout in enumerate(learning_outcomes):
+            if lout:
+                if not lout[0].isdigit():
+                    lout = '%d. %s' % (i+1, lout)
+                new_outcomes.append(lout)
+        outcome_string = '\n'.join(new_outcomes)
+        add_existing_data("learning_outcomes", outcome_string)
         add_existing_data("level", module_data['module']['levelCode'])
         add_existing_data("assessment", get_description(descriptions, 'MAV_ASSM'))
         add_existing_data("module_code", module_data['module']['moduleCode'])
