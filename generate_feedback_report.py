@@ -63,4 +63,4 @@ for module in modules:
                     })
 
             html = render_template('module_feedback_template.html', context)
-            HTML(string=html).write_pdf(os.path.join(OUTPUT_DIR, mcode, 'feedback_report.pdf'))
+            HTML(string=html).write_pdf(os.path.join(OUTPUT_DIR, mcode, '%s_feedback_report.pdf' % mcode))

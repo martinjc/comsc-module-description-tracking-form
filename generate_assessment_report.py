@@ -95,4 +95,4 @@ for module in module_list:
         html = render_template('module_assessment_template.html', context)
         if not os.path.exists(os.path.join(OUTPUT_DIR, module)):
             os.makedirs(os.path.join(OUTPUT_DIR, module))
-        HTML(string=html).write_pdf(os.path.join(OUTPUT_DIR, module, 'assessment_report.pdf'))
+        HTML(string=html).write_pdf(os.path.join(OUTPUT_DIR, module, '%s_assessment_report.pdf' % module))

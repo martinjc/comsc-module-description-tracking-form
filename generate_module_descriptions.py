@@ -84,4 +84,4 @@ if __name__ == "__main__":
         fdf_file.write(fdf)
         fdf_file.close()
 
-        subprocess.run(["pdftk", "templates/module_description_template.pdf",  "fill_form",  "dist/descriptions/data.fdf", "output", "dist/%s/module_description.pdf" % mcode])
+        subprocess.run(["pdftk", "templates/module_description_template.pdf",  "fill_form",  "dist/descriptions/data.fdf", "output", "dist/%s/%s_module_description.pdf" % (mcode, mcode)])
