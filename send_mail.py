@@ -4,6 +4,7 @@ from email.mime.text import MIMEText
 from email.utils import COMMASPACE, formatdate
 from email import encoders
 import smtplib
+import csv
 import os
 
 
@@ -41,16 +42,26 @@ if __name__ == "__main__":
 
     from _credentials import username, password, server, smtp_port
 
-    for module_code in ['CMT112']:
+    with open(os.path.join(os.getcwd(), 'src_data', 'mllist_sent.csv'), 'r') as input_file:
 
-        data_directory = os.path.join(os.getcwd(), 'dist', module_code)
-        docs_directory = os.path.join(os.getcwd(), 'documents')
-        files = [os.path.join(data_directory, f) for f in os.listdir(data_directory)]
-        files.extend([os.path.join(docs_directory, f) for f in os.listdir(docs_directory)])
+        reader = csv.DictReader(input_file)
+        for row in reader:
+            module_code = row['Module Code']
+            print(module_code)
+            name = row['First Name']
+            email = row['Email']
 
-        mail_from = "ChorleyMJ@cardiff.ac.uk"
-        mail_to = ["martin.chorley@gmail.com"]
-        subject = "Module Review 2016/17"
-        message = "Dear %s,\n\nPlease find attached the documents for this years module review for module %s. Attached to this email you will find:\n\n\tAn up to date copy of the module description\n\tA pre-filled (where possible) module tracking form\n\tA copy of last years student feedback for the module\n\tAn assessment report showing correlations between student marks for all assessments in the module and student's overall marks for the year\n\tA document containing guidance notes for the review process.\n\nPlease read the guidance notes carefully and review your module description for the coming 17/18 academic year accordingly, completing and updating the tracking form as necessary. Once complete, the module description and tracking form should be placed on the shared drive in 'School Administration/Teaching Administration/2016-17/Module Description Review/%s'.\n\nALL MODULE REVIEWS SHOULD BE COMPLETE BY 9AM, MONDAY JANUARY 30TH.\n\nIf you have any questions, please get in touch\n\nThanks,\nMartin'" % ("Martin", module_code, module_code)
+            data_directory = os.path.join(os.getcwd(), 'dist', module_code)
+            docs_directory = os.path.join(os.getcwd(), 'documents')
+            files = [os.path.join(data_directory, f) for f in os.listdir(data_directory)]
+            files.extend([os.path.join(docs_directory, f) for f in os.listdir(docs_directory)])
 
-        send_mail(mail_from, mail_to, subject, message, files, server, smtp_port, username, password)
+            mail_from = "ChorleyMJ@cardiff.ac.uk"
+            mail_to = [email, "ChorleyMJ@cardiff.ac.uk"]
+            subject = "Module Review 2016/17 - %s" % module_code
+            message = "Dear %s,\n\nPlease find attached the documents for this years module review for %s. It has been suggested that you will be best placed to carry out the review for this particular module this year. If you feel it is not appropriate for you to carry out the review of this module, please let me know as soon as possible.\n\nAttached to this email you will find:\n\n\tAn up to date copy of the module description\n\tA pre-filled (where possible) module tracking form\n\t(If available) An assessment report showing correlations between student marks for all assessments in the module and student's overall marks for the year\n\tA document containing guidance notes for the review process.\n\nPlease read the guidance notes carefully and review the module description for the coming 17/18 academic year accordingly, completing and updating the tracking form as necessary. Once complete, the module description and tracking form should be placed on the shared drive in 'School Administration/Teaching Administration/2016-17/Module Description Review/%s'.\n\nALL MODULE REVIEWS SHOULD BE COMPLETE BY 9AM, MONDAY JANUARY 30TH.\n\nIf you have any questions, please get in touch\n\nThanks,\nMartin" % (name, module_code, module_code)
+            print(mail_to)
+            print(subject)
+            print(message)
+            print(files)
+            send_mail(mail_from, mail_to, subject, message, files, server, smtp_port, username, password)
