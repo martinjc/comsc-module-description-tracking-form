@@ -4,3 +4,5 @@ dist/*
 comparisons/*
 */__pycache__/*
 __pycache__/*
+*.fdf
+*.txt
