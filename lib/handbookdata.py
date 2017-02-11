@@ -21,6 +21,24 @@ PFMSDSYA = ['CMT108', 'CMT112', 'CMT103', 'CMT209', 'CMT212', 'CMT111', 'CMT202'
 PFMSISPA = ['CMT301', 'CMT306', 'CMT105', 'CMT213', 'CMT104', 'CMT202']
 PFMSCDJ = ['CMT112', 'CMT103', 'CMT212', 'CMT111', 'CMT206']
 
+MD_ASSESSMENT_FIELDS = [
+    "1_assessment_title","1_assessment_type","1_assessment_contribution","1_assessment_date",
+    "2_assessment_title","2_assessment_type","2_assessment_contribution","2_assessment_date",
+    "3_assessment_title","3_assessment_type","3_assessment_contribution","3_assessment_date",
+    "4_assessment_title","4_assessment_type","4_assessment_contribution","4_assessment_date",
+    "5_assessment_title","5_assessment_type","5_assessment_contribution","5_assessment_date",
+    "6_assessment_title","6_assessment_type","6_assessment_contribution","6_assessment_date"]
+TF_ASSESSMENT_FIELDS = [
+    "4-textbox-assessment1-title", "4-dropdown-assessment1-type", "4-textbox-assessment1-weighting", "4-textbox-assessment1-duration", "4-textbox-assessment1-hand_out_week", "4-textbox-assessment1-hand_in_week",
+    "4-textbox-assessment2-title", "4-dropdown-assessment2-type", "4-textbox-assessment2-weighting", "4-textbox-assessment2-duration", "4-textbox-assessment2-hand_out_week", "4-textbox-assessment2-hand_in_week",
+    "4-textbox-assessment3-title", "4-dropdown-assessment3-type", "4-textbox-assessment3-weighting", "4-textbox-assessment3-duration", "4-textbox-assessment3-hand_out_week", "4-textbox-assessment3-hand_in_week",
+    "4-textbox-assessment4-title", "4-dropdown-assessment4-type", "4-textbox-assessment4-weighting", "4-textbox-assessment4-duration", "4-textbox-assessment4-hand_out_week", "4-textbox-assessment4-hand_in_week"
+    ]
+
+TF_SUPPORT_FIELDS = ["3-radio-require_phd_support_tutorials", "3-radio-no-require_phd_support_labs", "3-textbox-skills_for_lab_tutors", "3-textbox-skills_for_tutorial_tutors"]
+TF_SOFTWARE_FIELDS = ["5-textbox-software_lab_requirements"]
+TF_KIS_FIELDS = ["2-textbox-classroom_based_lectures", "2-textbox-classroom_based_seminars", "2-textbox-scheduled_online_activities", "2-textbox-practical_classes_and_workshops", "2-textbox-supervised_laboratory_time", "2-textbox-fieldwork", "2-textbox-exernal_visits", "2-textbox-work_based_learning", "2-textbox-scheduled_examination_assessment", "2-textbox-placement", "2-textbox-total_scheduled_teaching"]
+
 BASE_URL = 'https://handbooks.data.cardiff.ac.uk'
 ASPECTS = {
     'module_list': 'modulesrunning',
