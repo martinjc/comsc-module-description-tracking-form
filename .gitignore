@@ -2,6 +2,7 @@ _credentials.py
 src_data/*
 dist/*
 comparisons/*
+extracted/*
 */__pycache__/*
 __pycache__/*
 *.fdf
