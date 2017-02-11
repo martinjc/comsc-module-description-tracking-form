@@ -5,31 +5,10 @@ import subprocess
 from difflib import Differ, HtmlDiff
 from bs4 import BeautifulSoup as bs
 
+from lib.pdfdata import parse_fdf
 from lib.handbookdata import get_module_list
 from lib.handbookdata import FIELD_NAMES as field_names
 
-
-def parse_fdf(open_file):
-    fields = []
-    field = {}
-    for line in open_file.readlines():
-        if line == "---\n":
-            fields.append(field)
-            field = {}
-        else:
-            if line.startswith('Field'):
-                current_field = line.split(':')[0].strip()
-                field[current_field] = []
-                field[current_field].append(line.split(':')[1])
-            else:
-                field[current_field].append(line)
-    fields.append(field)
-    data = {}
-    for field in fields:
-        if field.get('FieldName') and field.get('FieldValue'):
-            field['FieldName'] = [s.strip() for s in field['FieldName']]
-            data["".join(field['FieldName'])] = "".join(field['FieldValue'])
-    return data
 
 def convert_data_to_text(input_data, output_file):
 
@@ -69,7 +48,7 @@ if __name__ == "__main__":
 
     original_folder = os.path.join(os.getcwd(), 'comparisons', 'original')
     updated_folder = os.path.join(os.getcwd(), 'comparisons', 'module_leader')
-    diff_folder = os.path.join(os.getcwd(), 'comparisons', 'diffs')
+    diff_folder = os.path.join(os.getcwd(), 'comparisons', 'diffs-mjc')
 
     for module in modules:
 
@@ -82,7 +61,7 @@ if __name__ == "__main__":
                 os.makedirs(os.path.join(diff_folder, mcode))
 
             subprocess.run(["pdftk", "comparisons/original/%s/%s_module_description.pdf" % (mcode, mcode),  "dump_data_fields_utf8", "output", "original.fdf"])
-            subprocess.run(["pdftk", "comparisons/module_leader/%s/%s_module_description.pdf" % (mcode, mcode),  "dump_data_fields_utf8", "output", "modified.fdf"])
+            subprocess.run(["pdftk", "comparisons/module_leader-mjc/%s/%s_module_description.pdf" % (mcode, mcode),  "dump_data_fields_utf8", "output", "modified.fdf"])
 
             with open("original.fdf", 'r', encoding='utf-8') as original_input, open("modified.fdf", 'r', encoding='utf-8') as modified_input, open('comparisons/diffs/%s/%s_changes.csv' % (mcode, mcode), 'w', encoding='utf-8') as output_file:
                 original_data = parse_fdf(original_input)

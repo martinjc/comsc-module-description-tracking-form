@@ -6,7 +6,7 @@ def get_fields_as_dict_from_pdf_datafile(fdf_data_file):
     """
     Returns a dict with keys representing the fields from a PDF form as represented
     by an fdf file. Obtain an fdf description of a PDF form using the command line
-    pdftk tool: "pdftk PDF_FORM_FILE.pdf dump_data_fields output OUTPUT_FILE.fdf"
+    pdftk tool: "pdftk PDF_FORM_FILE.pdf dump_data_fields_utf8 output OUTPUT_FILE.fdf"
     """
     fields = {}
 
@@ -18,3 +18,31 @@ def get_fields_as_dict_from_pdf_datafile(fdf_data_file):
                 fields[value] = None
 
     return fields
+
+
+def parse_fdf(fdf_data_file):
+
+    """
+    Extracts all fields and values from an fdf file. Obtain an fdf description of a PDF form using the command line
+    pdftk tool: "pdftk PDF_FORM_FILE.pdf dump_data_fields_utf8 output OUTPUT_FILE.fdf"
+    """
+    fields = []
+    field = {}
+    for line in fdf_data_file.readlines():
+        if line == "---\n":
+            fields.append(field)
+            field = {}
+        else:
+            if line.startswith('Field'):
+                current_field = line.split(':')[0].strip()
+                field[current_field] = []
+                field[current_field].append(line.split(':')[1])
+            else:
+                field[current_field].append(line)
+    fields.append(field)
+    data = {}
+    for field in fields:
+        if field.get('FieldName') and field.get('FieldValue'):
+            field['FieldName'] = [s.strip() for s in field['FieldName']]
+            data["".join(field['FieldName'])] = "".join(field['FieldValue'])
+    return data
