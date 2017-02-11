@@ -34,9 +34,13 @@ def parse_fdf(fdf_data_file):
             field = {}
         else:
             if line.startswith('Field'):
-                current_field = line.split(':')[0].strip()
+                current_field = line[:line.find(':')].strip()
+                #print(current_field)
+                #current_field = line.split(':')[0].strip()
                 field[current_field] = []
-                field[current_field].append(line.split(':')[1])
+                value = line[line.find(':')+1:].strip()
+                #print(value)
+                field[current_field].append(value)
             else:
                 field[current_field].append(line)
     fields.append(field)
