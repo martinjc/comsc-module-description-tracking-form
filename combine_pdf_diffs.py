@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     modules = get_module_list('COMSC')
 
-    diff_folder = os.path.join(os.getcwd(), 'comparisons', 'diffs')
+    diff_folder = os.path.join(os.getcwd(), 'comparisons', 'diffs-mjc')
 
     for f in ['year1', 'year2', 'year3', 'msc', 'nsa_year1', 'nsa_year2', 'nsa_year3', 'msc_cmp', 'msc_cit', 'msc_dysa', 'msc_cdj', 'msc_isp', 'msc_acs']:
 

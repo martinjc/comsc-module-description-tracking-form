@@ -47,7 +47,7 @@ if __name__ == "__main__":
     modules = get_module_list('COMSC')
 
     original_folder = os.path.join(os.getcwd(), 'comparisons', 'original')
-    updated_folder = os.path.join(os.getcwd(), 'comparisons', 'module_leader')
+    updated_folder = os.path.join(os.getcwd(), 'comparisons', 'module_leader-mjc')
     diff_folder = os.path.join(os.getcwd(), 'comparisons', 'diffs-mjc')
 
     for module in modules:
@@ -72,7 +72,7 @@ if __name__ == "__main__":
                 with open("modified.txt", 'w') as modified_text:
                     convert_data_to_text(modified_data, modified_text)
 
-                with open("original.txt", 'r') as ot, open("modified.txt", 'r') as mt, open("comparisons/diffs/%s/%s_diff.txt" % (mcode, mcode), "w") as dfile, open("comparisons/diffs/%s/%s_diff.html" % (mcode, mcode), "w") as hdfile, open("comparisons/diffs/%s/%s_changes_only.html" % (mcode, mcode), "w") as chfile:
+                with open("original.txt", 'r') as ot, open("modified.txt", 'r') as mt, open("comparisons/diffs-mjc/%s/%s_diff.txt" % (mcode, mcode), "w") as dfile, open("comparisons/diffs-mjc/%s/%s_diff.html" % (mcode, mcode), "w") as hdfile, open("comparisons/diffs-mjc/%s/%s_changes_only.html" % (mcode, mcode), "w") as chfile:
                     create_diffs(ot, mt, dfile, hdfile, chfile)
 
                 writer = csv.DictWriter(output_file, field_names, quoting=csv.QUOTE_ALL)
