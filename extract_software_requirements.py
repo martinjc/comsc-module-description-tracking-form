@@ -42,7 +42,7 @@ if __name__ == "__main__":
                     data = parse_fdf(data_input)
 
                     if data.get("5-textbox-software_lab_requirements"):
-                        mdata["Software Requirements"] = data["5-textbox-software_lab_requirements"].strip()
+                        mdata["Software Requirements"] = data["5-textbox-software_lab_requirements"]#.strip()
 
                 module_data.append(mdata)
 
