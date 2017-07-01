@@ -38,5 +38,5 @@ if __name__ == "__main__":
             with open("modified.fdf", 'r', encoding='utf-8') as modified_input:
                 modified_data = parse_fdf(modified_input)
 
-                with open(os.path.join(txt_folder, "%s.txt" % module), 'w') as modified_text:
+                with open(os.path.join(txt_folder, "%s.txt" % mcode), 'w') as modified_text:
                     convert_data_to_text(modified_data, modified_text)
