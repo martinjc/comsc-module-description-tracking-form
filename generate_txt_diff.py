@@ -104,8 +104,11 @@ if __name__ == "__main__":
 
                 txt_output_file.write('\nAssessment Breakdown\n')
                 for i in range(6):
-                    fn = '%d_assessment_type' % (i+1)
-                    if original_data.get(fn) or modified_data.get(fn):
+                    fn_type = '%d_assessment_type' % (i+1)
+                    fn_cont = "%d_assessment_contribution" % (i+1)
+                    fn_title = "%d_assessment_title" % (i+1)
+                    fn_date = "%d_assessment_date" % (i+1)
+                    if modified_data.get(fn_type) or modified_data.get(fn_cont) or modified_data.get(fn_title) or modified_data.get(fn_date):
                         txt_output_file.write('\nAssessment %d\n' % (i+1))
                         for fn, label in asssesment_names.items():
                             fn = '%d%s' % ((i+1), fn)
